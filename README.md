@@ -61,7 +61,7 @@ python scripts/train_models.py
 
 ## Deployment
 
-Deployed on [Streamlit Community Cloud](https://streamlit.io/cloud) from this repository.
+Deployed on [Streamlit Community Cloud](https://sama-aqi-nigeria.streamlit.app/) from this repository.
 Connect the repository, point the entrypoint at `app.py`, and add no secrets (Open-Meteo is keyless).
 
 ```
