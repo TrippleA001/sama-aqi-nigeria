@@ -1,4 +1,4 @@
-"""Forecast Lab — next-day PM2.5 / PM10 outlook from today's air and weather."""
+"""Forecast Lab: next-day PM2.5 and PM10 outlook from today's air and weather."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ page_header(
     "Tomorrow's air, from today's readings",
     "Given today's concentration, a recent weekly average and tomorrow's weather, the model "
     "forecasts the next 24-hour mean PM2.5 or PM10. Trained with a time-ordered holdout "
-    "(last 20% of days never seen in training) — no random-split flattery.",
+    "(the last 20% of days, held out from training), so no test-period information leaks in.",
 )
 
 # ------------------------------------------------------------------ model choice
@@ -61,7 +61,7 @@ deployed = record["models"]["Ensemble (deployed)"]
 persistence = record["models"]["Persistence (today)"]
 median_base = record["models"]["Median baseline"]
 
-section("00", f"{record['city']} · {record['pollutant']} forecast model", "Honest holdout performance.")
+section("00", f"{record['city']} · {record['pollutant']} forecast model", "Holdout performance.")
 m1, m2, m3, m4, m5 = st.columns(5)
 with m1:
     kpi("Deployed model", "Ensemble", "Ridge + RF + GB", compact=True)
@@ -85,7 +85,7 @@ with m5:
 st.caption(
     f"Trained on {record['train_rows']} days ({record['train_end']}), tested on {record['test_rows']} days "
     f"({record['test_start']} to {record['test_end']}). The notebooks' random-split R² figures "
-    f"(up to ~0.89) are not comparable — this is a genuine forecast task."
+    f"(up to ~0.89) are not comparable with this forecast task."
 )
 
 # --------------------------------------------------------------- input form
@@ -151,9 +151,9 @@ if submitted:
         <div style="border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:1.4rem 1.5rem;background:linear-gradient(160deg,rgba(17,38,30,0.85) 0%,rgba(8,21,16,0.7) 100%);margin:1rem 0">
           <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
             <div style="flex:1;min-width:220px">
-              <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:#92A89E;font-weight:600">Forecast — tomorrow's mean {label}</div>
+              <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:#92A89E;font-weight:600">Forecast: tomorrow's mean {label}</div>
               <div style="font-family:'Sora',sans-serif;font-size:3.2rem;font-weight:600;letter-spacing:-0.03em">{point:.1f}</div>
-              <div style="font-size:0.85rem;color:#8FA79E">µg/m³  ·  AQI <b style="color:{color}">{aqi_point:.0f} — {cat}</b></div>
+              <div style="font-size:0.85rem;color:#8FA79E">µg/m³  ·  AQI <b style="color:{color}">{aqi_point:.0f} ({cat})</b></div>
             </div>
             <div style="flex:0 0 250px">
               <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:#92A89E;font-weight:600">80% uncertainty band</div>
@@ -195,10 +195,10 @@ if submitted:
             st.plotly_chart(model_leaderboard(record), use_container_width=True)
 
 note(
-    "Honest limitations: this is a weather-and-persistence forecast, not a chemistry model. "
-    "Skill is modest for small towns (Anyigba) and weakest where day-to-day swings are driven "
-    "by sources the weather cannot explain (fires, traffic episodes, generator use). "
-    "Treat the band as directional guidance, never as a health advisory.",
+    "Limitations: this is a weather-and-persistence forecast, not a chemistry model. "
+    "Skill is modest for the rural site (Anyigba) and weakest where day-to-day variation is "
+    "driven by sources the weather features do not capture, such as fires, traffic episodes "
+    "and generator use. The uncertainty band is directional guidance, not a health advisory.",
 )
 
 footer()

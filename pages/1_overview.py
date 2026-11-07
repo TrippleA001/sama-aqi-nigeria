@@ -1,4 +1,4 @@
-"""Overview page — headline story, live conditions and study-area map."""
+"""Overview page: headline story, live conditions and study-area map."""
 
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ with k5:
     )
 
 # --------------------------------------------------------------- live conditions
-section("00", "Live conditions", "Independent Open-Meteo readings — not part of the 2021–2023 study.")
+section("00", "Live conditions", "Independent Open-Meteo readings, not part of the 2021–2023 study.")
 try:
     live, error = live_air_quality()
     if error:
@@ -80,10 +80,10 @@ try:
     for col, (_, row) in zip(cols, live.iterrows(), strict=False):
         with col:
             color = row["color"] or "#8A9A96"
-            cat = row["category"] or "—"
-            pm25 = "—" if pd.isna(row["pm25"]) else f"{row['pm25']:.1f}"
-            pm10 = "—" if pd.isna(row["pm10"]) else f"{row['pm10']:.1f}"
-            aqi_value = "—" if pd.isna(row["aqi"]) else f"{row['aqi']:.0f}"
+            cat = row["category"] or "n/a"
+            pm25 = "n/a" if pd.isna(row["pm25"]) else f"{row['pm25']:.1f}"
+            pm10 = "n/a" if pd.isna(row["pm10"]) else f"{row['pm10']:.1f}"
+            aqi_value = "n/a" if pd.isna(row["aqi"]) else f"{row['aqi']:.0f}"
             st.markdown(
                 f"""
                 <div class="kpi" style="border-color:{color}22">
@@ -132,10 +132,10 @@ with right:
         st.caption("Share of all city-days by EPA AQI category.")
 
 note(
-    "Takeaway: every urban city exceeds the WHO 24-hour PM2.5 guideline on most days "
-    f"({uvr['urban_who_exceedance_pct']:.0f}% average), while the rural comparator stays "
+    "Every urban site exceeds the WHO 24-hour PM2.5 guideline on most days "
+    f"({uvr['urban_who_exceedance_pct']:.0f}% average), while the rural comparator remains "
     f"below it on most days ({100 - uvr['rural_who_exceedance_pct']:.0f}% of days compliant). "
-    "This is the core story behind every other page in the app."
+    "This comparison underpins every other page."
 )
 
 footer()

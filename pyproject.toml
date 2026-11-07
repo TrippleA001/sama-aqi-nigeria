@@ -1,7 +1,7 @@
 [project]
 name = "sama-aqi-nigeria"
 version = "0.1.0"
-description = "Nigeria Air Quality Observatory — Streamlit app"
+description = "Nigeria Air Quality Observatory, a Streamlit app"
 requires-python = ">=3.10"
 dependencies = [
     "streamlit>=1.40,<2",

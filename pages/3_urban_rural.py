@@ -1,4 +1,4 @@
-"""Urban vs Rural — the headline comparison across the study."""
+"""Urban vs Rural: the headline comparison across the study."""
 
 from __future__ import annotations
 
@@ -60,7 +60,7 @@ with b1:
 with b2:
     with st.container(border=True):
         st.plotly_chart(aqi_donut(daily[daily["city"].isin(URBAN_CITIES)]), use_container_width=True)
-        st.caption("Urban cities only — share of city-days by EPA AQI category.")
+        st.caption("Urban cities only. Share of city-days by EPA AQI category.")
 
 # --------------------------------------------------------------- seasonality
 section("02", "Seasonal pattern by kind", "Dry season (Nov–Mar) vs rainy season (Apr–Oct), all cities.")
@@ -115,7 +115,7 @@ fmt = {
 }
 styled = table.rename(columns=fmt).set_index("Group").T
 for c in styled.columns:
-    styled[c] = styled[c].map(lambda v: f"{v:.1f}" if pd.notna(v) else "—")
+    styled[c] = styled[c].map(lambda v: f"{v:.1f}" if pd.notna(v) else "n/a")
 st.dataframe(styled, use_container_width=True, hide_index=False)
 
 note(

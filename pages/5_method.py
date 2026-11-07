@@ -1,4 +1,4 @@
-"""Method — data pipeline, modelling choices and honest limitations."""
+"""Method page: data pipeline, modelling choices and limitations."""
 
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ from src.theme import page_header, section, note, footer, legend
 from src.data import load_daily, load_summary, load_metrics
 from src.config import CITIES, CITY_ORDER, AQI_BANDS, BREAKPOINTS
 
-# Study-era daily PM2.5 means from Odubanjo et al. (2024), Table 3-ish values,
-# reproduced here to validate the cleaning/aggregation pipeline.
+# Study-era daily PM2.5 means reported by Odubanjo et al. (2024), transcribed
+# here to validate the cleaning and aggregation pipeline.
 PAPER_PM25_MEAN = {
     "Lagos": 37.39,
     "Abuja": 40.81,
@@ -31,8 +31,8 @@ metrics = load_metrics()
 page_header(
     "PAGE 04 · METHOD",
     "How the numbers were made",
-    "Data pipeline, AQI standards, modelling decisions and limitations — with the original "
-    "study reproduced where possible and honest divergence flagged where it matters.",
+    "Data pipeline, AQI standards, modelling decisions and limitations, with the original "
+    "study reproduced where possible and divergences flagged where they matter.",
 )
 
 # --------------------------------------------------------------- data section
@@ -87,11 +87,11 @@ with tab_cur:
         )
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 with tab_study:
-    st.caption("2006 breakpoints used by Odubanjo et al. (2024) — reproduced for validation.")
+    st.caption("2006 breakpoints used by Odubanjo et al. (2024), reproduced for validation.")
     data = []
     for name, lo, hi, _, _ in AQI_BANDS:
-        aqi_range = "—"
-        study_pm25 = "—"
+        aqi_range = "n/a"
+        study_pm25 = "n/a"
         for clo, chi, cilo, cihi in BREAKPOINTS["pm25"]["study"]:
             if abs(clo - lo) < 1e-6 or abs(chi - hi) < 1e-6:
                 study_pm25 = f"{clo} – {chi}"
@@ -113,8 +113,8 @@ st.caption("Band colours used throughout the app.")
 note(
     "The source study computed AQI from daily means with the 2006 table. This app's Overview "
     "and City Explorer use the current (2024) PM2.5 breakpoints, so AQI values may differ "
-    "slightly from the paper around the 35–40 µg/m³ boundary — that is intentional and "
-    "documented, not an error. The Method page below reproduces study-era values for the "
+    "slightly from the paper around the 35–40 µg/m³ boundary. This difference is intentional "
+    "and documented. The study-era table above reproduces the original values for the "
     "headline urban vs rural comparison."
 )
 
@@ -139,7 +139,7 @@ note(
 )
 
 # --------------------------------------------------------------- modelling
-section("04", "Modelling — next-day forecast", "Honest, time-ordered evaluation.")
+section("04", "Modelling: next-day forecast", "Time-ordered holdout evaluation.")
 deployed_avg = metrics["average_deployed_r2"]
 persist_avg = metrics["average_persistence_r2"]
 m1, m2 = st.columns(2)
@@ -156,7 +156,7 @@ note(
     "Model: next-day daily mean PM2.5 / PM10 from today's concentration, a 7-day rolling "
     "average, weather (temperature, humidity, pressure, wind speed/direction) and seasonality "
     "(month + day of week). Ridge + Random Forest + Gradient Boosting are averaged into the "
-    "deployed ensemble. The holdout is the last 20% of days per city — never seen in training."
+    "deployed ensemble. The holdout is the last 20% of days per city, never used in training."
 )
 
 rec_table = []
@@ -174,12 +174,12 @@ for key, rec in metrics["models"].items():
 st.dataframe(pd.DataFrame(rec_table), use_container_width=True, hide_index=True)
 
 note(
-    "Skill is real but modest (R² ≈ 0.2–0.65 depending on city), and Anyigba is near zero — "
-    "day-to-day swings there are driven by sources the weather cannot explain. This is shown "
-    "warts-and-all on the Forecast Lab page. The notebooks' random-split R² figures "
-    "(0.71–0.89) are not comparable to a true forecast and are not used anywhere in the app "
-    "except as context here. Uncertainty bands are the 10th–90th percentile spread of the "
-    "random-forest trees."
+    "Skill is modest (R² ≈ 0.2–0.65 depending on city) and close to zero for Anyigba, where "
+    "day-to-day variation is driven by sources the weather features do not capture. These "
+    "results, including the low-skill rural site, are reported in full on the Forecast Lab "
+    "page. The random-split R² figures from the original notebooks (0.71–0.89) are not "
+    "comparable with a true forecast and are shown only as context. Uncertainty bands are the "
+    "10th–90th percentile spread of the random-forest trees."
 )
 
 # --------------------------------------------------------------- limitations
@@ -197,11 +197,11 @@ for text in [
 section("06", "References & reproducibility")
 st.markdown(
     """
-- Odubanjo et al. (2024), *Journal of the Nigerian Society of Physical Sciences* 6, 2120 — source study and data.
-- US EPA AQI breakpoints (current and 2006 study tables) — `src/config.py`.
+- Odubanjo et al. (2024), *Journal of the Nigerian Society of Physical Sciences* 6, 2120 (source study and data).
+- US EPA AQI breakpoints (current and 2006 study tables), defined in `src/config.py`.
 - WHO 2021 24-hour guidelines: PM2.5 15 µg/m³, PM10 45 µg/m³.
 - Live conditions: Open-Meteo Air Quality API (no API key).
-- Code: `scripts/build_dataset.py`, `scripts/train_models.py`, `src/`, `app.py` — all in the repository.
+- Code: `scripts/build_dataset.py`, `scripts/train_models.py`, `src/` and `app.py` in this repository.
     """,
     unsafe_allow_html=False,
 )

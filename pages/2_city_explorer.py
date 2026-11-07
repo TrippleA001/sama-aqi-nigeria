@@ -1,4 +1,4 @@
-"""City Explorer — deep dive per city: time series, diurnal, monthly, calendar."""
+"""City Explorer: per-city time series, diurnal, monthly and calendar views."""
 
 from __future__ import annotations
 
@@ -72,9 +72,9 @@ k1, k2, k3, k4, k5 = st.columns(5)
 with k1:
     kpi(f"Mean {label}", f"{pm_vals.mean():.1f}", f"µg/m³ over {len(pm_vals)} days")
 with k2:
-    kpi("Mean AQI", f"{aqi_vals.mean():.0f}", aqi_category(aqi_vals.mean()) or "—")
+    kpi("Mean AQI", f"{aqi_vals.mean():.0f}", aqi_category(aqi_vals.mean()) or "n/a")
 with k3:
-    kpi("Peak AQI", f"{aqi_vals.max():.0f}", str(worst["date"].date()) if worst is not None else "—")
+    kpi("Peak AQI", f"{aqi_vals.max():.0f}", str(worst["date"].date()) if worst is not None else "n/a")
 with k4:
     kpi("WHO exceedance", f"{exceed:.0f}%", f"of days above {who} µg/m³")
 with k5:
@@ -95,7 +95,7 @@ with t2:
         st.plotly_chart(aqi_timeseries(frame), use_container_width=True)
 
 # --------------------------------------------------------------- charts row 2
-section("03", "Daily rhythm & seasonal pattern", "Average concentration by hour of day and by month.")
+section("03", "Daily rhythm and seasonal pattern", "Average concentration by hour of day and by month.")
 c1, c2 = st.columns(2, gap="large")
 with c1:
     with st.container(border=True):
@@ -155,8 +155,8 @@ st.markdown(
 )
 
 note(
-    "Source: CAR-NASRDA PurpleAir record, cleaned per the pipeline in `scripts/build_dataset.py`. "
-    "PM values are never interpolated; a day needs ≥18 valid hours (75% rule) to receive an AQI."
+    "Source: CAR-NASRDA PurpleAir record, cleaned by the pipeline in `scripts/build_dataset.py`. "
+    "PM values are never interpolated; a day needs at least 18 valid hours (75% rule) to receive an AQI."
 )
 
 footer()

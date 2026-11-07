@@ -387,6 +387,8 @@ div[data-baseweb="select"] > div:hover { border-color: rgba(110,231,183,0.45) !i
 
 /* Streamlit's own spacing tweaks */
 [data-testid="stHorizontalBlock"] { gap: 0.9rem; }
+/* The one-pixel helper frame only carries the mobile navigation script. */
+[data-testid="stIFrame"] { display: none !important; }
 hr { border-color: var(--line); }
 
 /* ---------- responsive ---------- */
