@@ -66,7 +66,7 @@ median_base = record["models"]["Median baseline"]
 section("00", f"{record['city']} · {record['pollutant']} forecast model", "Honest holdout performance.")
 m1, m2, m3, m4, m5 = st.columns(5)
 with m1:
-    kpi("Deployed model", "Ensemble", "Ridge + Random Forest + Gradient Boosting")
+    kpi("Deployed model", "Ensemble", "Ridge + Random Forest + Gradient Boosting", compact=True)
 with m2:
     kpi(
         "Holdout R²",

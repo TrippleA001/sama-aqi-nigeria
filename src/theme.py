@@ -206,6 +206,7 @@ a:hover { text-decoration: underline; }
   margin: 0.55rem 0 0.3rem 0;
 }
 .kpi-value small { font-size: 0.9rem; color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.kpi-value--text { font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1.15; }
 .kpi-sub { font-size: 0.76rem; color: var(--muted); }
 .kpi-sub b { color: var(--accent); font-weight: 600; }
 .kpi-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
@@ -388,13 +389,20 @@ def page_header(eyebrow: str, title: str, description: str) -> None:
     )
 
 
-def kpi(label: str, value: str, sub: str = "", color: str | None = None) -> None:
+def kpi(
+    label: str,
+    value: str,
+    sub: str = "",
+    color: str | None = None,
+    compact: bool = False,
+) -> None:
     dot = f'<span class="kpi-dot" style="background:{color}"></span>' if color else ""
+    value_class = "kpi-value kpi-value--text" if compact else "kpi-value"
     st.markdown(
         f"""
 <div class="kpi">
   <div class="kpi-label">{dot}{label}</div>
-  <div class="kpi-value">{value}</div>
+  <div class="{value_class}">{value}</div>
   <div class="kpi-sub">{sub}</div>
 </div>
 """,
