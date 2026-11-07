@@ -23,7 +23,7 @@ st.set_page_config(
     page_title="Sama · Nigeria Air Quality Observatory",
     page_icon="☁️",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="auto",
 )
 
 inject_css()
@@ -53,5 +53,5 @@ PAGES = [
     st.Page("pages/5_method.py", title="Method", icon=":material/science:"),
 ]
 
-pg = st.navigation(PAGES, position="top")
+pg = st.navigation(PAGES, position="sidebar")
 pg.run()

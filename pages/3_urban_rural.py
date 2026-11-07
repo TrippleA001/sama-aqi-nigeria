@@ -21,8 +21,6 @@ from src.charts import (
 )
 from src.config import URBAN_CITIES, RURAL_CITIES, WHO_24H
 
-st.set_page_config(page_title="Sama · Urban vs Rural", page_icon=":material/compare_arrows:", layout="wide")
-
 daily = load_daily()
 summary = load_summary()
 cards = city_cards(summary)

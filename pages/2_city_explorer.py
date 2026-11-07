@@ -23,8 +23,6 @@ from src.charts import (
 from src.config import CITIES, CITY_ORDER, AQI_COLORS, WHO_24H
 from src.aqi import aqi_category
 
-st.set_page_config(page_title="Sama · City Explorer", page_icon=":material/location_city:", layout="wide")
-
 daily = load_daily()
 hourly = load_hourly()
 

@@ -20,8 +20,6 @@ from src.charts import model_scatter, model_leaderboard, importance_bars, aqi_ga
 from src.config import CITY_ORDER
 from src.aqi import aqi_from_concentration, aqi_category, aqi_color
 
-st.set_page_config(page_title="Sama · Forecast Lab", page_icon=":material/psychology:", layout="wide")
-
 daily = load_daily()
 metrics = load_metrics()
 
@@ -66,22 +64,22 @@ median_base = record["models"]["Median baseline"]
 section("00", f"{record['city']} · {record['pollutant']} forecast model", "Honest holdout performance.")
 m1, m2, m3, m4, m5 = st.columns(5)
 with m1:
-    kpi("Deployed model", "Ensemble", "Ridge + Random Forest + Gradient Boosting", compact=True)
+    kpi("Deployed model", "Ensemble", "Ridge + RF + GB", compact=True)
 with m2:
     kpi(
         "Holdout R²",
         f"{deployed['r2']:.2f}",
-        f"RMSE {deployed['rmse']:.1f} · MAE {deployed['mae']:.1f}",
+        f"RMSE {deployed['rmse']:.1f}",
     )
 with m3:
-    kpi("Vs persistence", f"{persistence['r2']:.2f}", "tomorrow = today benchmark")
+    kpi("Vs persistence", f"{persistence['r2']:.2f}", "tomorrow = today")
 with m4:
-    kpi("Vs median baseline", f"{median_base['r2']:.2f}", "city median benchmark")
+    kpi("Vs median", f"{median_base['r2']:.2f}", "city median")
 with m5:
     kpi(
-        "80% band coverage",
+        "80% band",
         f"{record['interval_coverage_pct']:.0f}%",
-        "forest-tree spread on holdout",
+        "holdout coverage",
     )
 
 st.caption(

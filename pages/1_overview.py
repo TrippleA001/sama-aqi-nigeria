@@ -15,8 +15,6 @@ from src.data import load_daily, load_summary, city_cards, live_air_quality
 from src.charts import city_map, urban_rural_bars, aqi_donut, concentration_timeseries
 from src.config import CITY_ORDER, URBAN_CITIES
 
-st.set_page_config(page_title="Sama · Overview", page_icon="☁️", layout="wide")
-
 daily = load_daily()
 summary = load_summary()
 cards = city_cards(summary)
@@ -85,11 +83,12 @@ try:
             cat = row["category"] or "—"
             pm25 = "—" if pd.isna(row["pm25"]) else f"{row['pm25']:.1f}"
             pm10 = "—" if pd.isna(row["pm10"]) else f"{row['pm10']:.1f}"
+            aqi_value = "—" if pd.isna(row["aqi"]) else f"{row['aqi']:.0f}"
             st.markdown(
                 f"""
                 <div class="kpi" style="border-color:{color}22">
                   <div class="kpi-label" style="color:{color};font-weight:700">{row["city"]}</div>
-                  <div class="kpi-value" style="font-size:1.9rem">{row["aqi"]:.0f if pd.notna(row['aqi']) else '—'}</div>
+                  <div class="kpi-value" style="font-size:1.9rem">{aqi_value}</div>
                   <div class="kpi-sub" style="color:{color};font-weight:700">{cat}</div>
                   <div class="kpi-sub">PM2.5 {pm25} · PM10 {pm10} µg/m³</div>
                 </div>

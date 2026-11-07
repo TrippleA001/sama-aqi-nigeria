@@ -24,8 +24,6 @@ PAPER_PM25_MEAN = {
     "Anyigba": 14.36,
 }
 
-st.set_page_config(page_title="Sama · Method", page_icon=":material/science:", layout="wide")
-
 daily = load_daily()
 summary = load_summary()
 metrics = load_metrics()
