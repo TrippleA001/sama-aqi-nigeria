@@ -1,0 +1,1350 @@
+{
+  "generated_at": "2026-10-27T14:27:19+00:00",
+  "method": "Next-day daily mean; time-ordered holdout (first 80% train, last 20% test); 99th percentile target cap",
+  "features": [
+    "lag1",
+    "roll7",
+    "temp_c",
+    "humidity_pct",
+    "pressure_hpa",
+    "wind_speed_ms",
+    "wind_dir_sin",
+    "wind_dir_cos",
+    "month_sin",
+    "month_cos",
+    "dow_sin",
+    "dow_cos"
+  ],
+  "targets": {
+    "pm25": "PM2.5",
+    "pm10": "PM10"
+  },
+  "reference_notebooks": {
+    "Lagos|PM2.5": {
+      "r2": 0.735,
+      "rmse": 12.02,
+      "task": "hourly, random split"
+    },
+    "Lagos|PM10": {
+      "r2": 0.756,
+      "rmse": 13.9,
+      "task": "hourly, random split"
+    },
+    "Abuja|PM2.5": {
+      "r2": 0.714,
+      "rmse": 10.19,
+      "task": "hourly, random split"
+    },
+    "Abuja|PM10": {
+      "r2": 0.766,
+      "rmse": 13.22,
+      "task": "hourly, random split"
+    },
+    "Benin City|PM2.5": {
+      "r2": 0.417,
+      "rmse": 15.77,
+      "task": "hourly, random split"
+    },
+    "Benin City|PM10": {
+      "r2": 0.458,
+      "rmse": 22.15,
+      "task": "hourly, random split"
+    },
+    "Osogbo|PM2.5": {
+      "r2": 0.783,
+      "rmse": 6.82,
+      "task": "hourly, random split"
+    },
+    "Osogbo|PM10": {
+      "r2": 0.823,
+      "rmse": 8.31,
+      "task": "hourly, random split"
+    },
+    "Anyigba|PM2.5": {
+      "r2": 0.882,
+      "rmse": 3.76,
+      "task": "hourly, random split"
+    },
+    "Anyigba|PM10": {
+      "r2": 0.892,
+      "rmse": 4.21,
+      "task": "hourly, random split"
+    }
+  },
+  "models": {
+    "Lagos|PM2.5": {
+      "city": "Lagos",
+      "pollutant": "PM2.5",
+      "target": "pm25",
+      "task": "next-day daily mean",
+      "rows": 695,
+      "train_rows": 556,
+      "test_rows": 139,
+      "train_end": "2022-11-17",
+      "test_start": "2022-11-18",
+      "test_end": "2023-04-29",
+      "target_cap": 126.1,
+      "models": {
+        "Ridge": {
+          "r2": 0.6123314097573913,
+          "rmse": 12.998578610731883,
+          "mae": 9.800097191816104,
+          "mape": 42.54232607215413,
+          "n": 139
+        },
+        "Random forest": {
+          "r2": 0.4348621885411422,
+          "rmse": 15.694328557365147,
+          "mae": 12.425432199026957,
+          "mape": 49.369586537438,
+          "n": 139
+        },
+        "Gradient boosting": {
+          "r2": 0.27670838558269795,
+          "rmse": 17.75506524456602,
+          "mae": 13.460902379396067,
+          "mape": 49.25621975153949,
+          "n": 139
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.49357035033649366,
+          "rmse": 14.856794615417193,
+          "mae": 11.516128803160557,
+          "mape": 46.104337190194414,
+          "n": 139
+        },
+        "Persistence (today)": {
+          "r2": 0.518427673518537,
+          "rmse": 14.487595728728644,
+          "mae": 9.399348873868849,
+          "mape": 34.80860204811584,
+          "n": 139
+        },
+        "Median baseline": {
+          "r2": -0.18278073469678136,
+          "rmse": 22.704799887995495,
+          "mae": 18.141627653660752,
+          "mape": 63.355976519515565,
+          "n": 139
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 61.2,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 7.9373,
+          "share": 87.68
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.81,
+          "share": 8.95
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.145,
+          "share": 1.6
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.1206,
+          "share": 1.33
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.036,
+          "share": 0.4
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0042,
+          "share": 0.05
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.735,
+        "rmse": 12.02,
+        "task": "hourly, random split"
+      },
+      "model_file": "lagos_pm25.joblib"
+    },
+    "Lagos|PM10": {
+      "city": "Lagos",
+      "pollutant": "PM10",
+      "target": "pm10",
+      "task": "next-day daily mean",
+      "rows": 695,
+      "train_rows": 556,
+      "test_rows": 139,
+      "train_end": "2022-11-17",
+      "test_start": "2022-11-18",
+      "test_end": "2023-04-29",
+      "target_cap": 144.5,
+      "models": {
+        "Ridge": {
+          "r2": 0.672311375464423,
+          "rmse": 14.19138543665118,
+          "mae": 10.765948934947891,
+          "mape": 41.06976424233809,
+          "n": 139
+        },
+        "Random forest": {
+          "r2": 0.4806168511574501,
+          "rmse": 17.866440624104424,
+          "mae": 14.313265213654539,
+          "mape": 48.71175207577206,
+          "n": 139
+        },
+        "Gradient boosting": {
+          "r2": 0.4546192095214294,
+          "rmse": 18.308131849383248,
+          "mae": 14.039798406916496,
+          "mape": 46.15672799723025,
+          "n": 139
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.5773557228876057,
+          "rmse": 16.116903635964146,
+          "mae": 12.624419089162227,
+          "mape": 44.388564077534106,
+          "n": 139
+        },
+        "Persistence (today)": {
+          "r2": 0.6054766648901866,
+          "rmse": 15.571500382981352,
+          "mae": 10.519477102261682,
+          "mape": 34.19289895754582,
+          "n": 139
+        },
+        "Median baseline": {
+          "r2": -0.23917309003248355,
+          "rmse": 27.5968872821281,
+          "mae": 22.277688522719867,
+          "mape": 63.76265445453896,
+          "n": 139
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 59.0,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 11.1817,
+          "share": 91.55
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.6378,
+          "share": 5.22
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.1313,
+          "share": 1.07
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.118,
+          "share": 0.97
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.088,
+          "share": 0.72
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0351,
+          "share": 0.29
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0212,
+          "share": 0.17
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.756,
+        "rmse": 13.9,
+        "task": "hourly, random split"
+      },
+      "model_file": "lagos_pm10.joblib"
+    },
+    "Abuja|PM2.5": {
+      "city": "Abuja",
+      "pollutant": "PM2.5",
+      "target": "pm25",
+      "task": "next-day daily mean",
+      "rows": 571,
+      "train_rows": 456,
+      "test_rows": 115,
+      "train_end": "2022-11-28",
+      "test_start": "2022-11-29",
+      "test_end": "2023-04-29",
+      "target_cap": 103.6,
+      "models": {
+        "Ridge": {
+          "r2": 0.5840196695036112,
+          "rmse": 10.447027074206355,
+          "mae": 7.735187715922778,
+          "mape": 13.677523018062212,
+          "n": 115
+        },
+        "Random forest": {
+          "r2": 0.5054749202354354,
+          "rmse": 11.390701819060949,
+          "mae": 8.592436810648474,
+          "mape": 15.171320976020658,
+          "n": 115
+        },
+        "Gradient boosting": {
+          "r2": 0.4640720353871498,
+          "rmse": 11.857947737552525,
+          "mae": 8.886345090961285,
+          "mape": 15.37008423011675,
+          "n": 115
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.5439495102904653,
+          "rmse": 10.938626299144719,
+          "mae": 8.205258099026215,
+          "mape": 14.30828217630515,
+          "n": 115
+        },
+        "Persistence (today)": {
+          "r2": 0.5625359640460911,
+          "rmse": 10.713404436772525,
+          "mae": 7.828141840061905,
+          "mape": 14.309691775072968,
+          "n": 115
+        },
+        "Median baseline": {
+          "r2": -1.6694456127748074,
+          "rmse": 26.46469303061628,
+          "mae": 20.993296583672308,
+          "mape": 33.89158936348748,
+          "n": 115
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 72.2,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 4.6947,
+          "share": 69.52
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.8247,
+          "share": 12.21
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.504,
+          "share": 7.46
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.2464,
+          "share": 3.65
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.152,
+          "share": 2.25
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.1007,
+          "share": 1.49
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0957,
+          "share": 1.42
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0881,
+          "share": 1.3
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0214,
+          "share": 0.32
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0132,
+          "share": 0.2
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0124,
+          "share": 0.18
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.714,
+        "rmse": 10.19,
+        "task": "hourly, random split"
+      },
+      "model_file": "abuja_pm25.joblib"
+    },
+    "Abuja|PM10": {
+      "city": "Abuja",
+      "pollutant": "PM10",
+      "target": "pm10",
+      "task": "next-day daily mean",
+      "rows": 571,
+      "train_rows": 456,
+      "test_rows": 115,
+      "train_end": "2022-11-28",
+      "test_start": "2022-11-29",
+      "test_end": "2023-04-29",
+      "target_cap": 115.3,
+      "models": {
+        "Ridge": {
+          "r2": 0.6416771296887405,
+          "rmse": 11.37073317969868,
+          "mae": 8.69562671790988,
+          "mape": 12.708120054525246,
+          "n": 115
+        },
+        "Random forest": {
+          "r2": 0.6033909993804882,
+          "rmse": 11.962790232658405,
+          "mae": 9.188816784670694,
+          "mape": 13.573613128087564,
+          "n": 115
+        },
+        "Gradient boosting": {
+          "r2": 0.5531502080763542,
+          "rmse": 12.697902397931271,
+          "mae": 9.622454597779004,
+          "mape": 13.997806750460299,
+          "n": 115
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.6190802418069996,
+          "rmse": 11.723787945633966,
+          "mae": 8.96634158684807,
+          "mape": 13.09727724165573,
+          "n": 115
+        },
+        "Persistence (today)": {
+          "r2": 0.5983705829490694,
+          "rmse": 12.038266738002065,
+          "mae": 8.784436459693012,
+          "mape": 13.062868225844676,
+          "n": 115
+        },
+        "Median baseline": {
+          "r2": -1.964982569638245,
+          "rmse": 32.70862418164508,
+          "mae": 26.78519980865622,
+          "mape": 35.069147545145846,
+          "n": 115
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 73.0,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 5.6877,
+          "share": 66.54
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 1.6348,
+          "share": 19.13
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.4194,
+          "share": 4.91
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.3278,
+          "share": 3.84
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.1983,
+          "share": 2.32
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.1404,
+          "share": 1.64
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0938,
+          "share": 1.1
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0422,
+          "share": 0.49
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0024,
+          "share": 0.03
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0002,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.766,
+        "rmse": 13.22,
+        "task": "hourly, random split"
+      },
+      "model_file": "abuja_pm10.joblib"
+    },
+    "Benin City|PM2.5": {
+      "city": "Benin City",
+      "pollutant": "PM2.5",
+      "target": "pm25",
+      "task": "next-day daily mean",
+      "rows": 618,
+      "train_rows": 494,
+      "test_rows": 124,
+      "train_end": "2022-10-16",
+      "test_start": "2022-10-17",
+      "test_end": "2023-04-29",
+      "target_cap": 180.1,
+      "models": {
+        "Ridge": {
+          "r2": 0.5304303585494704,
+          "rmse": 17.606427089042317,
+          "mae": 13.376344924145807,
+          "mape": 33.847250414628505,
+          "n": 124
+        },
+        "Random forest": {
+          "r2": 0.48674192418985185,
+          "rmse": 18.40725898255753,
+          "mae": 13.923068743530386,
+          "mape": 33.39315859086519,
+          "n": 124
+        },
+        "Gradient boosting": {
+          "r2": 0.5049851309486579,
+          "rmse": 18.07716612539553,
+          "mae": 13.652995197918987,
+          "mape": 33.11101450894435,
+          "n": 124
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.560054652906123,
+          "rmse": 17.042001195362698,
+          "mae": 13.138067848418386,
+          "mape": 32.828452112060276,
+          "n": 124
+        },
+        "Persistence (today)": {
+          "r2": -0.43395608165418564,
+          "rmse": 30.767283415238264,
+          "mae": 17.459069251748982,
+          "mape": 36.3390987023858,
+          "n": 124
+        },
+        "Median baseline": {
+          "r2": -0.04988200203046955,
+          "rmse": 26.32639980099461,
+          "mae": 14.961421860837499,
+          "mape": 31.537179422588196,
+          "n": 124
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 62.1,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 4.8923,
+          "share": 61.99
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 1.0441,
+          "share": 13.23
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.836,
+          "share": 10.59
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.6865,
+          "share": 8.7
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.2482,
+          "share": 3.14
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.1363,
+          "share": 1.73
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0242,
+          "share": 0.31
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0211,
+          "share": 0.27
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0039,
+          "share": 0.05
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.417,
+        "rmse": 15.77,
+        "task": "hourly, random split"
+      },
+      "model_file": "benin_city_pm25.joblib"
+    },
+    "Benin City|PM10": {
+      "city": "Benin City",
+      "pollutant": "PM10",
+      "target": "pm10",
+      "task": "next-day daily mean",
+      "rows": 618,
+      "train_rows": 494,
+      "test_rows": 124,
+      "train_end": "2022-10-16",
+      "test_start": "2022-10-17",
+      "test_end": "2023-04-29",
+      "target_cap": 207.1,
+      "models": {
+        "Ridge": {
+          "r2": 0.6000711975985482,
+          "rmse": 18.459127667625843,
+          "mae": 14.477229249261287,
+          "mape": 31.473937030500053,
+          "n": 124
+        },
+        "Random forest": {
+          "r2": 0.582632492470067,
+          "rmse": 18.85728435910492,
+          "mae": 14.411099923462219,
+          "mape": 29.36072197813609,
+          "n": 124
+        },
+        "Gradient boosting": {
+          "r2": 0.6091380103460494,
+          "rmse": 18.248684022441598,
+          "mae": 14.240199285756251,
+          "mape": 29.29149648085373,
+          "n": 124
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.6523982400080963,
+          "rmse": 17.20920529752555,
+          "mae": 13.75921439904568,
+          "mape": 29.484886020094287,
+          "n": 124
+        },
+        "Persistence (today)": {
+          "r2": -0.3084580900449647,
+          "rmse": 33.38871772570268,
+          "mae": 18.505235353680543,
+          "mape": 31.917046429978154,
+          "n": 124
+        },
+        "Median baseline": {
+          "r2": -0.030652523818130994,
+          "rmse": 29.633023656245882,
+          "mae": 16.79212413979831,
+          "mape": 30.75979185410491,
+          "n": 124
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 64.5,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 6.3752,
+          "share": 61.33
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 1.5025,
+          "share": 14.45
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.9102,
+          "share": 8.76
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.9088,
+          "share": 8.74
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.5444,
+          "share": 5.24
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0975,
+          "share": 0.94
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0413,
+          "share": 0.4
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.014,
+          "share": 0.13
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0009,
+          "share": 0.01
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.458,
+        "rmse": 22.15,
+        "task": "hourly, random split"
+      },
+      "model_file": "benin_city_pm10.joblib"
+    },
+    "Osogbo|PM2.5": {
+      "city": "Osogbo",
+      "pollutant": "PM2.5",
+      "target": "pm25",
+      "task": "next-day daily mean",
+      "rows": 630,
+      "train_rows": 504,
+      "test_rows": 126,
+      "train_end": "2022-10-30",
+      "test_start": "2022-10-31",
+      "test_end": "2023-04-17",
+      "target_cap": 88.4,
+      "models": {
+        "Ridge": {
+          "r2": 0.41936526589036816,
+          "rmse": 6.177513829215407,
+          "mae": 4.855598880407997,
+          "mape": 21.36887172924152,
+          "n": 126
+        },
+        "Random forest": {
+          "r2": 0.20006633844350397,
+          "rmse": 7.250854768015499,
+          "mae": 5.656516723424432,
+          "mape": 23.339868278780738,
+          "n": 126
+        },
+        "Gradient boosting": {
+          "r2": -0.08379479362113806,
+          "rmse": 8.439869868095094,
+          "mae": 6.46092988734397,
+          "mape": 25.73994273090487,
+          "n": 126
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.2427365886019318,
+          "rmse": 7.0548162568017165,
+          "mae": 5.542738934344834,
+          "mape": 22.96318033487444,
+          "n": 126
+        },
+        "Persistence (today)": {
+          "r2": 0.6474123369765368,
+          "rmse": 4.813885723670549,
+          "mae": 3.074593517179374,
+          "mape": 13.171486996162338,
+          "n": 126
+        },
+        "Median baseline": {
+          "r2": -0.025944911612027832,
+          "rmse": 8.211532973526785,
+          "mae": 6.484056465483511,
+          "mape": 30.777281524952233,
+          "n": 126
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 78.6,
+      "feature_importance": [
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.6025,
+          "share": 35.92
+        },
+        {
+          "feature": "lag1",
+          "rmse_increase": 0.5651,
+          "share": 33.69
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.4393,
+          "share": 26.19
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.0333,
+          "share": 1.99
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.013,
+          "share": 0.77
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0116,
+          "share": 0.69
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0066,
+          "share": 0.4
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0058,
+          "share": 0.34
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.783,
+        "rmse": 6.82,
+        "task": "hourly, random split"
+      },
+      "model_file": "osogbo_pm25.joblib"
+    },
+    "Osogbo|PM10": {
+      "city": "Osogbo",
+      "pollutant": "PM10",
+      "target": "pm10",
+      "task": "next-day daily mean",
+      "rows": 630,
+      "train_rows": 504,
+      "test_rows": 126,
+      "train_end": "2022-10-30",
+      "test_start": "2022-10-31",
+      "test_end": "2023-04-17",
+      "target_cap": 111.2,
+      "models": {
+        "Ridge": {
+          "r2": 0.48765964019898267,
+          "rmse": 8.073893515154422,
+          "mae": 6.413266632054007,
+          "mape": 22.503721954485755,
+          "n": 126
+        },
+        "Random forest": {
+          "r2": 0.3626045015239098,
+          "rmse": 9.005508258473649,
+          "mae": 7.267765634313531,
+          "mape": 23.47633646471784,
+          "n": 126
+        },
+        "Gradient boosting": {
+          "r2": 0.10823268820065579,
+          "rmse": 10.651959519723745,
+          "mae": 8.377979377782356,
+          "mape": 26.539561199147887,
+          "n": 126
+        },
+        "Ensemble (deployed)": {
+          "r2": 0.36441928698789305,
+          "rmse": 8.992678927970344,
+          "mae": 7.173203318347985,
+          "mape": 23.559697958949634,
+          "n": 126
+        },
+        "Persistence (today)": {
+          "r2": 0.7329978989898681,
+          "rmse": 5.82855732536796,
+          "mae": 4.0680031639718885,
+          "mape": 13.81999142203524,
+          "n": 126
+        },
+        "Median baseline": {
+          "r2": -0.00019915831386096983,
+          "rmse": 11.280983790732957,
+          "mae": 8.905729045559253,
+          "mape": 32.41203659817545,
+          "n": 126
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 81.7,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 1.578,
+          "share": 54.4
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.9128,
+          "share": 31.47
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.3471,
+          "share": 11.96
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0352,
+          "share": 1.21
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.0205,
+          "share": 0.71
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.007,
+          "share": 0.24
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.823,
+        "rmse": 8.31,
+        "task": "hourly, random split"
+      },
+      "model_file": "osogbo_pm10.joblib"
+    },
+    "Anyigba|PM2.5": {
+      "city": "Anyigba",
+      "pollutant": "PM2.5",
+      "target": "pm25",
+      "task": "next-day daily mean",
+      "rows": 485,
+      "train_rows": 388,
+      "test_rows": 97,
+      "train_end": "2022-10-13",
+      "test_start": "2022-10-14",
+      "test_end": "2023-04-27",
+      "target_cap": 63.6,
+      "models": {
+        "Ridge": {
+          "r2": -0.701736270432664,
+          "rmse": 9.866116981408599,
+          "mae": 7.403557423107788,
+          "mape": 87.37051750362063,
+          "n": 97
+        },
+        "Random forest": {
+          "r2": 0.003253398662742879,
+          "rmse": 7.550792131444587,
+          "mae": 3.6746128208552356,
+          "mape": 45.56087937787415,
+          "n": 97
+        },
+        "Gradient boosting": {
+          "r2": -0.008450358290037707,
+          "rmse": 7.594993300921809,
+          "mae": 3.6752970484672915,
+          "mape": 45.50767779015464,
+          "n": 97
+        },
+        "Ensemble (deployed)": {
+          "r2": -0.0989475638968138,
+          "rmse": 7.928455959518687,
+          "mae": 4.55709285027573,
+          "mape": 55.260492845335264,
+          "n": 97
+        },
+        "Persistence (today)": {
+          "r2": -0.8782908015095112,
+          "rmse": 10.36529218070518,
+          "mae": 3.8324694195682736,
+          "mape": 67.07751997682809,
+          "n": 97
+        },
+        "Median baseline": {
+          "r2": -0.08706283812513194,
+          "rmse": 7.8854677068540635,
+          "mae": 4.751537473624071,
+          "mape": 48.26359333839828,
+          "n": 97
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 84.5,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 0.0702,
+          "share": 59.45
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.03,
+          "share": 25.42
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0173,
+          "share": 14.7
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0005,
+          "share": 0.43
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.882,
+        "rmse": 3.76,
+        "task": "hourly, random split"
+      },
+      "model_file": "anyigba_pm25.joblib"
+    },
+    "Anyigba|PM10": {
+      "city": "Anyigba",
+      "pollutant": "PM10",
+      "target": "pm10",
+      "task": "next-day daily mean",
+      "rows": 485,
+      "train_rows": 388,
+      "test_rows": 97,
+      "train_end": "2022-10-13",
+      "test_start": "2022-10-14",
+      "test_end": "2023-04-27",
+      "target_cap": 71.0,
+      "models": {
+        "Ridge": {
+          "r2": -0.7117741093212113,
+          "rmse": 11.146148019451898,
+          "mae": 8.413210102545607,
+          "mape": 90.51032982853454,
+          "n": 97
+        },
+        "Random forest": {
+          "r2": -0.022291963620549637,
+          "rmse": 8.61368633166284,
+          "mae": 4.4445446270121165,
+          "mape": 49.17528748860341,
+          "n": 97
+        },
+        "Gradient boosting": {
+          "r2": 0.061905314040182624,
+          "rmse": 8.251348256902494,
+          "mae": 3.9307284273513785,
+          "mape": 45.03693887966928,
+          "n": 97
+        },
+        "Ensemble (deployed)": {
+          "r2": -0.08112756932116927,
+          "rmse": 8.858089226472874,
+          "mae": 5.168622590785601,
+          "mape": 56.97908154184576,
+          "n": 97
+        },
+        "Persistence (today)": {
+          "r2": -0.6439689471508847,
+          "rmse": 10.923162245086212,
+          "mae": 4.226924656011827,
+          "mape": 65.35056243700316,
+          "n": 97
+        },
+        "Median baseline": {
+          "r2": -0.08589893459852571,
+          "rmse": 8.877614512249941,
+          "mae": 5.360167885853885,
+          "mape": 49.82927340058511,
+          "n": 97
+        }
+      },
+      "deployed": "Ensemble (deployed)",
+      "interval_coverage_pct": 81.4,
+      "feature_importance": [
+        {
+          "feature": "lag1",
+          "rmse_increase": 0.1059,
+          "share": 76.84
+        },
+        {
+          "feature": "dow_sin",
+          "rmse_increase": 0.0296,
+          "share": 21.49
+        },
+        {
+          "feature": "dow_cos",
+          "rmse_increase": 0.0012,
+          "share": 0.84
+        },
+        {
+          "feature": "month_sin",
+          "rmse_increase": 0.0011,
+          "share": 0.83
+        },
+        {
+          "feature": "roll7",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "temp_c",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "humidity_pct",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "pressure_hpa",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_speed_ms",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_sin",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "wind_dir_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        },
+        {
+          "feature": "month_cos",
+          "rmse_increase": 0.0,
+          "share": 0.0
+        }
+      ],
+      "reference_notebook": {
+        "r2": 0.892,
+        "rmse": 4.21,
+        "task": "hourly, random split"
+      },
+      "model_file": "anyigba_pm10.joblib"
+    }
+  },
+  "average_deployed_r2": 0.387,
+  "average_persistence_r2": 0.14,
+  "average_deployed_mae": 9.07,
+  "elapsed_seconds": 317.1
+}

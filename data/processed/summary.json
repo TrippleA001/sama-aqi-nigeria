@@ -1,0 +1,337 @@
+{
+  "generated_at": "2026-10-27T14:20:08+00:00",
+  "study_start": "2021-05-01",
+  "study_end": "2023-04-30",
+  "cities": {
+    "Lagos": {
+      "state": "Lagos State",
+      "kind": "Urban",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "population_m": 15.4,
+      "blurb": "Nigeria's commercial megacity: traffic, ports, industry and dense residential energy use.",
+      "hourly_rows": 17520,
+      "valid_pm25_hours": 16817,
+      "coverage_pm25_pct": 95.99,
+      "outlier_hours": 293,
+      "days": 699,
+      "pm25_mean": 34.41,
+      "pm25_median": 29.78,
+      "pm25_p95": 76.28,
+      "pm10_mean": 40.34,
+      "aqi_mean": 96.9,
+      "aqi_p95": 165.1,
+      "aqi_max": 232,
+      "who_pm25_exceedance_pct": 85.1,
+      "dry_pm25": 45.6,
+      "rainy_pm25": 27.06,
+      "audit": {
+        "raw_rows": 17471,
+        "source_file": "Reworked Lagos Hourly.xlsx",
+        "source_sheet": "Lagos hourly conformed",
+        "outliers": {
+          "pm1": {
+            "flagged": 312,
+            "lower": -41.38,
+            "upper": 82.08
+          },
+          "pm25": {
+            "flagged": 293,
+            "lower": -70.18,
+            "upper": 128.76
+          },
+          "pm10": {
+            "flagged": 196,
+            "lower": -96.05,
+            "upper": 167.27
+          }
+        },
+        "duplicates_removed": 35,
+        "invalid_values": {
+          "temp_c": 1,
+          "humidity_pct": 5,
+          "pressure_hpa": 8,
+          "wind_speed_ms": 2,
+          "wind_dir_deg": 0,
+          "pm1": 1,
+          "pm25": 1,
+          "pm10": 1
+        },
+        "pm1_missing_before_reindex": 612,
+        "pm25_missing_before_reindex": 619,
+        "pm10_missing_before_reindex": 612,
+        "rows_after_cleaning": 17520,
+        "coverage_pct": 95.99,
+        "pm25_valid_hours": 16817,
+        "pm10_valid_hours": 16824
+      }
+    },
+    "Abuja": {
+      "state": "Federal Capital Territory",
+      "kind": "Urban",
+      "lat": 9.0765,
+      "lon": 7.3986,
+      "population_m": 3.6,
+      "blurb": "The federal capital: rapid construction, government fleets and a fast-growing population.",
+      "hourly_rows": 17520,
+      "valid_pm25_hours": 12748,
+      "coverage_pm25_pct": 72.76,
+      "outlier_hours": 253,
+      "days": 476,
+      "pm25_mean": 42.06,
+      "pm25_median": 38.72,
+      "pm25_p95": 77.32,
+      "pm10_mean": 52.32,
+      "aqi_mean": 113.3,
+      "aqi_p95": 166.0,
+      "aqi_max": 213,
+      "who_pm25_exceedance_pct": 99.2,
+      "dry_pm25": 58.29,
+      "rainy_pm25": 31.38,
+      "audit": {
+        "raw_rows": 12754,
+        "source_file": "Abuja's Data.xlsx",
+        "source_sheet": "Hourly",
+        "outliers": {
+          "pm1": {
+            "flagged": 248,
+            "lower": -30.36,
+            "upper": 84.8
+          },
+          "pm25": {
+            "flagged": 253,
+            "lower": -42.9,
+            "upper": 117.16
+          },
+          "pm10": {
+            "flagged": 106,
+            "lower": -67.69,
+            "upper": 162.52
+          }
+        },
+        "duplicates_removed": 4,
+        "invalid_values": {
+          "temp_c": 1,
+          "humidity_pct": 0,
+          "pressure_hpa": 0,
+          "wind_speed_ms": 0,
+          "wind_dir_deg": 0,
+          "pm1": 0,
+          "pm25": 0,
+          "pm10": 0
+        },
+        "pm1_missing_before_reindex": 1,
+        "pm25_missing_before_reindex": 1,
+        "pm10_missing_before_reindex": 1,
+        "rows_after_cleaning": 17520,
+        "coverage_pct": 72.76,
+        "pm25_valid_hours": 12748,
+        "pm10_valid_hours": 12748
+      }
+    },
+    "Benin City": {
+      "state": "Edo State",
+      "kind": "Urban",
+      "lat": 6.335,
+      "lon": 5.6037,
+      "population_m": 1.8,
+      "blurb": "A historic southern city where traffic, biomass burning and artisanal refining overlap.",
+      "hourly_rows": 17520,
+      "valid_pm25_hours": 14560,
+      "coverage_pm25_pct": 83.11,
+      "outlier_hours": 1043,
+      "days": 577,
+      "pm25_mean": 46.18,
+      "pm25_median": 38.51,
+      "pm25_p95": 97.76,
+      "pm10_mean": 56.44,
+      "aqi_mean": 117.3,
+      "aqi_p95": 180.4,
+      "aqi_max": 386,
+      "who_pm25_exceedance_pct": 99.5,
+      "dry_pm25": 59.82,
+      "rainy_pm25": 37.9,
+      "audit": {
+        "raw_rows": 14560,
+        "source_file": "Benin City's Data.xlsx",
+        "source_sheet": "Benin City Hourly",
+        "outliers": {
+          "pm1": {
+            "flagged": 1315,
+            "lower": -31.28,
+            "upper": 80.93
+          },
+          "pm25": {
+            "flagged": 1043,
+            "lower": -49.54,
+            "upper": 118.2
+          },
+          "pm10": {
+            "flagged": 693,
+            "lower": -73.8,
+            "upper": 164.34
+          }
+        },
+        "duplicates_removed": 0,
+        "invalid_values": {
+          "temp_c": 0,
+          "humidity_pct": 85,
+          "pressure_hpa": 0,
+          "wind_speed_ms": 0,
+          "wind_dir_deg": 0,
+          "pm1": 0,
+          "pm25": 0,
+          "pm10": 0
+        },
+        "pm1_missing_before_reindex": 0,
+        "pm25_missing_before_reindex": 0,
+        "pm10_missing_before_reindex": 0,
+        "rows_after_cleaning": 17520,
+        "coverage_pct": 83.11,
+        "pm25_valid_hours": 14560,
+        "pm10_valid_hours": 14560
+      }
+    },
+    "Osogbo": {
+      "state": "Osun State",
+      "kind": "Urban",
+      "lat": 7.7827,
+      "lon": 4.5418,
+      "population_m": 0.5,
+      "blurb": "A growing state capital surrounded by agriculture, with traffic and biomass emissions.",
+      "hourly_rows": 17520,
+      "valid_pm25_hours": 15176,
+      "coverage_pm25_pct": 86.62,
+      "outlier_hours": 212,
+      "days": 608,
+      "pm25_mean": 28.65,
+      "pm25_median": 24.91,
+      "pm25_p95": 53.9,
+      "pm10_mean": 36.43,
+      "aqi_mean": 87.7,
+      "aqi_p95": 146.0,
+      "aqi_max": 207,
+      "who_pm25_exceedance_pct": 91.0,
+      "dry_pm25": 37.41,
+      "rainy_pm25": 22.93,
+      "audit": {
+        "raw_rows": 15184,
+        "source_file": "Osogbo's Data.xlsx",
+        "source_sheet": "Osogbo Hourly",
+        "outliers": {
+          "pm1": {
+            "flagged": 246,
+            "lower": -23.36,
+            "upper": 61.42
+          },
+          "pm25": {
+            "flagged": 213,
+            "lower": -38.63,
+            "upper": 91.7
+          },
+          "pm10": {
+            "flagged": 110,
+            "lower": -59.6,
+            "upper": 127.49
+          }
+        },
+        "duplicates_removed": 3,
+        "invalid_values": {
+          "temp_c": 2,
+          "humidity_pct": 78,
+          "pressure_hpa": 0,
+          "wind_speed_ms": 0,
+          "wind_dir_deg": 0,
+          "pm1": 0,
+          "pm25": 0,
+          "pm10": 0
+        },
+        "pm1_missing_before_reindex": 0,
+        "pm25_missing_before_reindex": 2,
+        "pm10_missing_before_reindex": 0,
+        "rows_after_cleaning": 17520,
+        "coverage_pct": 86.62,
+        "pm25_valid_hours": 15176,
+        "pm10_valid_hours": 15178
+      }
+    },
+    "Anyigba": {
+      "state": "Kogi State",
+      "kind": "Rural",
+      "lat": 7.5,
+      "lon": 7.1667,
+      "population_m": 0.1,
+      "blurb": "A semi-urban savanna town: the study's rural comparator, dominated by biomass and agricultural sources.",
+      "hourly_rows": 17520,
+      "valid_pm25_hours": 12038,
+      "coverage_pm25_pct": 68.71,
+      "outlier_hours": 362,
+      "days": 474,
+      "pm25_mean": 14.11,
+      "pm25_median": 9.16,
+      "pm25_p95": 44.78,
+      "pm10_mean": 15.81,
+      "aqi_mean": 53.3,
+      "aqi_p95": 123.3,
+      "aqi_max": 168,
+      "who_pm25_exceedance_pct": 26.6,
+      "dry_pm25": 25.49,
+      "rainy_pm25": 7.7,
+      "audit": {
+        "raw_rows": 12043,
+        "source_file": "Anyigba's Data.xlsx",
+        "source_sheet": "Anyigba Hourly",
+        "outliers": {
+          "pm1": {
+            "flagged": 386,
+            "lower": -22.91,
+            "upper": 37.22
+          },
+          "pm25": {
+            "flagged": 362,
+            "lower": -33.48,
+            "upper": 55.08
+          },
+          "pm10": {
+            "flagged": 343,
+            "lower": -37.98,
+            "upper": 61.83
+          }
+        },
+        "duplicates_removed": 0,
+        "invalid_values": {
+          "temp_c": 0,
+          "humidity_pct": 4,
+          "pressure_hpa": 0,
+          "wind_speed_ms": 0,
+          "wind_dir_deg": 0,
+          "pm1": 1,
+          "pm25": 1,
+          "pm10": 1
+        },
+        "pm1_missing_before_reindex": 4,
+        "pm25_missing_before_reindex": 5,
+        "pm10_missing_before_reindex": 4,
+        "rows_after_cleaning": 17520,
+        "coverage_pct": 68.71,
+        "pm25_valid_hours": 12038,
+        "pm10_valid_hours": 12039
+      }
+    }
+  },
+  "totals": {
+    "hourly_rows": 87600,
+    "daily_rows": 3650,
+    "valid_pm25_hours": 71339,
+    "days_with_aqi": 2834
+  },
+  "urban_vs_rural": {
+    "urban_pm25_mean": 37.35,
+    "rural_pm25_mean": 14.11,
+    "ratio": 2.65,
+    "urban_aqi_mean": 102.8,
+    "rural_aqi_mean": 53.3,
+    "urban_who_exceedance_pct": 93.0,
+    "rural_who_exceedance_pct": 26.6
+  }
+}
